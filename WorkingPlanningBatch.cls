@@ -35,9 +35,7 @@ public class WorkingPlanningBatch implements Database.Batchable<sobject>, Databa
     }
     
     public void execute(Database.BatchableContext bc, List<sObject> scope){
-        Integer size = scope.size();
-        List<API_Log__c> log = new List<API_Log__c>();
-        
+        Integer size = scope.size();        
         //Make all API Calls in batch and save Secret Key for 
         //all successful calls in the scope
         for(Integer i = 0; i < size; i++){
