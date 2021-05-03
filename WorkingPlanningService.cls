@@ -15,16 +15,14 @@
 */
 
 public with sharing class WorkingPlanningService {
-    public static ApiResponse getAPICall(sObject sObj){
-        //Using Named Creentials
-        String endpoint = 'callout:APTest';
-        
+    public static ApiResponse getAPICall(sObject sObj){        
         //Retrieve Case Id and OwnerId from Case Object to send to API
         String cid = JSON.serialize(sObj.get('Id'));
         String agentId = JSON.serialize(sObj.get('OwnerId'));
         
         //Create API Request
         HttpRequest request = new HttpRequest();
+        //Using Named Creentials
         request.setEndpoint('callout:APTest');
 	request.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         request.setHeader('Content-Type','application/json'); 
