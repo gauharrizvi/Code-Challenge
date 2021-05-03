@@ -26,7 +26,7 @@ public with sharing class WorkingPlanningService {
         //Create API Request
         HttpRequest request = new HttpRequest();
         request.setEndpoint('callout:APTest');
-		request.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
+	request.setHeader('Authorization', 'Bearer ' + UserInfo.getSessionID());
         request.setHeader('Content-Type','application/json'); 
         request.setMethod('POST');
         //Increased timeout value to 120,000
@@ -40,9 +40,7 @@ public with sharing class WorkingPlanningService {
         try{
             httpres = http.send(request);
             //Deserialize response to API response object
-            System.debug('BeforeDes='+httpres.getBody());
             ApiResponse resp = (ApiResponse)System.JSON.deserialize(httpres.getBody(), ApiResponse.class);
-            System.debug('AfterDes='+httpres.getBody());
             return resp;
 
         } catch(System.CalloutException ex){
